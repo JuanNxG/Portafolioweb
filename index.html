@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Manuel Jhon Caro - Portafolio Profesional</title>
+    <meta name="description" content="Portafolio profesional de Juan Manuel Jhon Caro, Ingeniero en sistemas y Desarrollador Web Full Stack. Descubre mis proyectos y habilidades en desarrollo web.">
+    <meta name="keywords" content="portafolio, desarrollador web, full stack, ingeniero en sistemas, Juan Manuel Jhon Caro, JavaScript, Python, HTML, CSS, Java, PostgreSQL">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables CSS para colores - Inspirado en Google */
+        :root {
+            --primary-color: #4285F4; /* Google Blue */
+            --secondary-color: #5f6368; /* Darker neutral gray */
+            --accent-color: #34A853; /* Google Green */
+            --text-color: #202124; /* Near black for main text */
+            --light-text-color: #ffffff; /* White */
+            --background-light: #f8f9fa; /* Very light gray */
+            --background-dark: #202124; /* Dark gray/near black */
+            --card-background: #ffffff; /* White */
+            --border-color: #dadce0; /* Light gray */
+            --skills-background-blue: #e8f0fe; /* Light blue for skills section */
+        }
+
+        /* Reset y estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            overflow-x: hidden; /* Evita el scroll horizontal */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Botones - Diseño Innovador */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px; /* Slightly more rounded */
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #3c78d8; /* Slightly darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Header y Navegación - Diseño Innovador */
+        .header {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Menú hamburguesa para móvil */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text-color);
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* Secciones generales - Diseño Innovador */
+        section {
+            padding: 6rem 0 4rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--background-light);
+        }
+
+        section:nth-of-type(odd) {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+        }
+
+        section:nth-of-type(odd) h1,
+        section:nth-of-type(odd) h2,
+        section:nth-of-type(odd) h3,
+        section:nth-of-type(odd) p {
+            color: var(--light-text-color);
+        }
+
+        /* Hero Section - Diseño Innovador */
+        #hero {
+            background-image: url('https://placehold.co/1920x1080/202124/ffffff?text=Innovación+Digital'); /* Darker, modern background */
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+            padding-top: 0;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Slightly lighter overlay */
+            z-index: -1;
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light-text-color);
+        }
+
+        #hero .subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #F4B400; /* Google Yellow for subtitle accent */
+            margin-bottom: 0.5rem;
+        }
+
+        #hero .description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--light-text-color);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* About Me Section - Diseño Innovador */
+        #about {
+            background-color: var(--background-light);
+            color: var(--text-color);
+            padding: 6rem 0;
+        }
+
+        #about .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            text-align: left;
+        }
+
+        #about .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #about .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #about .about-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        #about h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            width: 100%;
+        }
+
+        /* Skills Section - Diseño Innovador */
+        #skills {
+            background-color: var(--skills-background-blue); /* Changed background to light blue */
+            color: var(--text-color); /* Ensures all direct text inside #skills is black */
+            padding: 6rem 0;
+        }
+
+        #skills h2 {
+            color: var(--text-color); /* Ensures h2 is black */
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .skill-category {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            color: var(--text-color); /* Ensures text inside skill-category is black */
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color); /* This is Google Blue, which is fine */
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-item p {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color); /* Explicitly set for skill item paragraphs */
+        }
+
+        .skill-item p .skill-level {
+            color: var(--text-color); /* Explicitly set for skill level span */
+        }
+
+        .progress-bar-container {
+            background-color: var(--border-color);
+            height: 8px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            width: 0; /* Se animará con JS */
+            transition: width 1s ease-out;
+        }
+
+        /* Experience and Education Sections - Diseño Innovador */
+        #experience, #education {
+            background-color: var(--background-light);
+            color: var(--text-color);
+            padding: 6rem 0;
+        }
+
+        #experience h2, #education h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 1rem 2rem;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: -10px;
+            background-color: var(--card-background);
+            border: 2px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.left::after {
+            left: auto;
+            right: -10px;
+        }
+
+        .timeline-item.right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: var(--card-background);
+            position: relative;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            color: var(--text-color); /* Ensure text inside timeline-content is black */
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-color); /* Explicitly set for timeline paragraph text */
+        }
+
+        .timeline-content p strong {
+            color: var(--text-color); /* Explicitly set for strong tags within paragraphs */
+        }
+
+        .timeline-content ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-color); /* Explicitly set for unordered list text */
+        }
+        .timeline-content ul li {
+            color: var(--text-color); /* Explicitly set for list item text */
+        }
+
+        /* Projects Section - Diseño Innovador */
+        #projects {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            padding: 6rem 0;
+        }
+
+        #projects h2 {
+            color: var(--light-text-color);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+        }
+
+        .project-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-info p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-info .technologies {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-links .btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section - Diseño Innovador */
+        #contact {
+            background-color: var(--background-light);
+            color: var(--text-color);
+            padding: 6rem 0;
+        }
+
+        #contact h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            max-width: 600px;
+            background-color: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
+            font-size: 1rem;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2); /* Google Blue shadow */
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-info a {
+            word-break: break-all;
+        }
+
+        /* Footer - Diseño Innovador */
+        .footer {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Utilidades de animación (para JS) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 992px) {
+            #hero h1 {
+                font-size: 3.5rem;
+            }
+            #hero .subtitle {
+                font-size: 1.5rem;
+            }
+            #hero .description {
+                font-size: 1.1rem;
+            }
+
+            .timeline::after {
+                left: 18px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 3.5rem;
+                padding-right: 1rem;
+            }
+
+            .timeline-item.right {
+                left: 0%;
+            }
+
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 10px;
+            }
+
+            .timeline-content {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 2rem;
+                top: 1.5rem;
+            }
+
+            #hero h1 {
+                font-size: 2.8rem;
+            }
+            #hero .subtitle {
+                font-size: 1.2rem;
+            }
+            #hero .description {
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            #about .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            #about .about-image {
+                max-width: 250px;
+            }
+            #about .about-content {
+                text-align: center;
+            }
+
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+            .contact-form, .contact-info {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#hero" class="logo">Juan Manuel Jhon Caro</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Inicio</a></li>
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#experience">Experiencia</a></li>
+                <li><a href="#education">Educación</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="fade-in">
+        <div class="container">
+            <p class="subtitle">Innovación en Ingeniería de Software y Soluciones Digitales</p>
+            <h1>Impulsando el Futuro con Tecnología de Vanguardia</h1>
+            <p class="description">Desarrollador Full Stack apasionado por crear soluciones escalables e impactantes que transforman el mundo digital.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Explorar Proyectos</a>
+                <a href="cv.pdf" class="btn btn-secondary" download>Descargar CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="fade-in">
+        <div class="container">
+            <h2>Sobre Mí</h2>
+            <div class="about-image">
+                <img src="https://placehold.co/300x300/4285F4/ffffff?text=Mi+Foto+Profesional" alt="Foto de Juan Manuel Jhon Caro">
+            </div>
+            <div class="about-content">
+                <p>Mi trayectoria profesional se enfoca en la creación de ecosistemas tecnológicos robustos y eficientes, combinando mi experiencia en redes corporativas y bases de datos con una visión innovadora. Me dedico a diseñar arquitecturas que no solo resuelven los desafíos actuales, sino que también anticipan las necesidades futuras.</p>
+                <p>Soy experto en diagnosticar y optimizar sistemas complejos, garantizando la máxima disponibilidad y rendimiento. Mi compromiso con la seguridad y la integridad de los datos es inquebrantable. A corto plazo, busco liderar la adopción de tecnologías emergentes como la inteligencia artificial y el aprendizaje automático en soluciones empresariales. A mediano plazo, aspiro a ser un referente en la transformación digital a nivel global.</p>
+                <p>Disfruto profundamente la oportunidad de resolver problemas técnicos que tienen un impacto real en la productividad y el crecimiento. Cada nuevo desafío es una oportunidad para demostrar cómo la tecnología, aplicada con estrategia y creatividad, puede impulsar el éxito de las organizaciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="fade-in">
+        <div class="container">
+            <h2>Mis Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Habilidades Técnicas</h3>
+                    <div class="skill-item">
+                        <p>JavaScript <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Python <span class="skill-level">Intermedio</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="80"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>CSS <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="95"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>HTML <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="95"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Java <span class="skill-level">Intermedio</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="75"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>PostgreSQL <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Git <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="90"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Herramientas</h3>
+                    <div class="skill-item">
+                        <p>VS Code <span class="skill-level">Experto</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="95"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Figma <span class="skill-level">Intermedio</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="70"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Adobe XD <span class="skill-level">Básico</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="60"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Jira <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="85"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Habilidades Blandas</h3>
+                    <div class="skill-item">
+                        <p>Comunicación efectiva <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Trabajo en equipo <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Resolución de problemas complejos <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Liderazgo <span class="skill-level">Intermedio</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="75"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <p>Adaptabilidad <span class="skill-level">Avanzado</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" data-progress="90"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="fade-in">
+        <div class="container">
+            <h2>Experiencia Laboral</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Ingeniero de Soluciones Cloud</h3>
+                        <p><strong>TechGlobal Innovations</strong></p>
+                        <p>02/2023 – Actualidad</p>
+                        <ul>
+                            <li>Diseño e implementação de soluções de infraestrutura cloud escaláveis em AWS, Azure e Google Cloud, otimizando custos e desempenho.</li>
+                            <li>Liderazgo em la migração de sistemas legacy a entornos de microservicios y contenedores (Docker, Kubernetes).</li>
+                            <li>Desarrollo de estrategias de seguridad cibernética avanzadas y planes de recuperación ante desastres para infraestructuras críticas.</li>
+                            <li>Colaboración com equipos de desarrollo para integrar prácticas DevOps y CI/CD, acelerando los ciclos de lanzamiento de productos.</li>
+                            <li>Consultoría técnica a clientes globales, traduciendo requisitos de negocio em soluciones tecnológicas innovadoras.</li>
+                            <li>Implementação de sistemas de monitoreo proactivo y automatización para garantizar la fiabilidad y disponibilidad del servicio.</li>
+                            <li>Optimización del rendimiento de aplicaciones distribuidas, resultando em una mejora del 30% en los tiempos de respuesta.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Especialista em Bases de Dados y Redes</h3>
+                        <p><strong>Global Data Solutions</strong></p>
+                        <p>01/2020 – 01/2023</p>
+                        <ul>
+                            <li>Administração y otimização de bases de dados relacionales y NoSQL (PostgreSQL, MongoDB, Cassandra) para aplicaciones de alto tráfico.</li>
+                            <li>Diseño e implementação de arquitecturas de red complejas, incluyendo VPNs, firewalls y balanceadores de carga.</li>
+                            <li>Resolución de problemas de conectividad y rendimiento de red, minimizando el tiempo de inactividad del sistema.</li>
+                            <li>Implementação de políticas de respaldo y recuperación de datos, asegurando la integridad y disponibilidad de la información crítica.</li>
+                            <li>Automatização de tareas de administración de sistemas y redes mediante scripts (Python, Bash).</li>
+                            <li>Participação em proyectos de expansión de infraestrutura, garantizando la escalabilidad y la seguridad.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="fade-in">
+        <div class="container">
+            <h2>Formación Académica</h2>
+            <div class="timeline">
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Maestría en Inteligencia Artificial y Ciencia de Datos</h3>
+                        <p><strong>Universidad de la Innovación Global</strong></p>
+                        <p>2026-2028 (Esperado)</p>
+                        <p>Enfoque en Machine Learning, Deep Learning, procesamiento de lenguaje natural y análisis de Big Data.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Ingeniería de Software</h3>
+                        <p><strong>Universidad Tecnológica Avanzada</strong></p>
+                        <p>2019-2023</p>
+                        <p>Enfoque en desarrollo de software, algoritmos, estructuras de datos, metodologías ágiles y gestión de proyectos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <div class="container">
+            <h2>Mis Proyectos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://placehold.co/400x250/4285F4/ffffff?text=Plataforma+IA" alt="[Image of Plataforma IA]">
+                    <div class="project-info">
+                        <h3>Plataforma de Análisis Predictivo con IA</h3>
+                        <p>Desarrollo de una plataforma basada en IA para análisis predictivo en el sector financiero, utilizando modelos de aprendizaje automático para prever tendencias de mercado y optimizar inversiones.</p>
+                        <p class="technologies"><strong>Tecnologías:</strong> Python, TensorFlow, Keras, Flask, PostgreSQL, Docker, AWS SageMaker</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary">Ver Proyecto</a>
+                            <a href="#" class="btn btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/400x250/DB4437/ffffff?text=App+Colaborativa" alt="[Image of App Colaborativa]">
+                    <div class="project-info">
+                        <h3>Aplicación Colaborativa en Tiempo Real</h3>
+                        <p>Creación de una aplicación web para colaboración en tiempo real, permitiendo a equipos trabajar simultáneamente en documentos, con funcionalidades de chat integrado y control de versiones.</p>
+                        <p class="technologies"><strong>Tecnologías:</strong> React, Node.js, Socket.IO, MongoDB, Google Cloud Firestore</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary">Ver Proyecto</a>
+                            <a href="#" class="btn btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/400x250/F4B400/ffffff?text=Sistema+IoT" alt="[Image of Sistema IoT]">
+                    <div class="project-info">
+                        <h3>Sistema de Gestión de Dispositivos IoT</h3>
+                        <p>Implementación de un sistema integral para la gestión y monitoreo de dispositivos IoT, incluyendo recolección de datos en tiempo real, visualización de métricas y alertas personalizadas.</p>
+                        <p class="technologies"><strong>Tecnologías:</strong> Python, Django, MQTT, InfluxDB, Grafana, Raspberry Pi</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary">Ver Proyecto</a>
+                            <a href="#" class="btn btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/400x250/0F9D58/ffffff?text=Blockchain+Supply" alt="[Image of Blockchain Supply]">
+                    <div class="project-info">
+                        <h3>Blockchain para Trazabilidad de Cadena de Suministro</h3>
+                        <p>Desarrollo de una solución basada en blockchain para mejorar la transparencia y trazabilidad en la cadena de suministro, permitiendo el registro inmutable de transacciones y productos.</p>
+                        <p class="technologies"><strong>Tecnologías:</strong> Solidity, Ethereum, Truffle, Ganache, React</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary">Ver Proyecto</a>
+                            <a href="#" class="btn btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <div class="container">
+            <h2>Conectemos</h2>
+            <p>Estoy siempre abierto a nuevas ideas, proyectos desafiantes y colaboraciones significativas. ¡Hagamos que la innovación suceda!</p>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>Envíame un Mensaje</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Asunto:</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p><strong>Email:</strong> <a href="mailto:juanmanuel.jhoncaro@example.com">juanmanuel.jhoncaro@example.com</a></p>
+                    <p><strong>Teléfono:</strong> +57 300 123 4567</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/juanmanueljhoncaro" target="_blank">linkedin.com/in/juanmanueljhoncaro</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/juanmanueljhoncaro" target="_blank">github.com/juanmanueljhoncaro</a></p>
+                    <p><strong>Ubicación:</strong> Cali, Valle del Cauca, Colombia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Juan Manuel Jhon Caro. Impulsando la innovación, un byte a la vez.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Highlight active navigation link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('.nav-links li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) { // Adjusted offset
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const skillBars = document.querySelectorAll('.progress-bar');
+        const skillsSection = document.getElementById('skills');
+
+        const animateSkills = () => {
+            const sectionPos = skillsSection.getBoundingClientRect().top;
+            const screenHeight = window.innerHeight;
+
+            if (sectionPos < screenHeight * 0.75 && sectionPos > -skillsSection.clientHeight) {
+                skillBars.forEach(bar => {
+                    const progress = bar.dataset.progress;
+                    bar.style.width = progress + '%';
+                });
+            } else {
+                // Reset bars when out of view if desired, or keep them animated
+                skillBars.forEach(bar => {
+                    bar.style.width = '0%';
+                });
+            }
+        };
+
+        window.addEventListener('scroll', animateSkills);
+        // Run on load to animate if section is already in view
+        window.addEventListener('load', animateSkills);
+
+        // Fade-in animation for sections
+        const faders = document.querySelectorAll('.fade-in');
+
+        const appearOptions = {
+            threshold: 0.2, // When 20% of the element is visible
+            rootMargin: "0px 0px -100px 0px" // Start appearing 100px before reaching the bottom of the viewport
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
