@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Memoria - Términos de Informática</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .card {
+      width: 120px;
+      height: 120px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .card-back {
+      background-color: #007bff;
+      color: white;
+    }
+    .card-front {
+      background-color: #f8f9fa;
+      transform: rotateY(180deg);
+    }
+    .vibrate {
+      animation: vibrate 0.3s linear;
+    }
+    @keyframes vibrate {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+  </style>
+</head>
+<body class="container py-5">
+  <h1 class="text-center mb-4">Juego de Memoria: Términos de Informática</h1>
+  <div class="d-flex justify-content-between mb-3">
+    <div>Tiempo: <span id="timer">0</span> s</div>
+    <div>Errores: <span id="errors">0</span></div>
+    <button class="btn btn-danger" onclick="resetGame()">Rendirse</button>
+  </div>
+  <div id="gameBoard" class="card-container"></div>
+
+  <div id="message" class="text-center mt-4"></div>
+
+  <script>
+    const levels = [
+      [{ term: 'API', def: 'Interfaz para comunicar apps' }, { term: 'Bug', def: 'Error en el código' }, { term: 'Firewall', def: 'Protege redes de accesos' }],
+      [
+        { term: 'Frontend', def: 'Parte visual de la app' },
+        { term: 'Backend', def: 'Lógica y base de datos' },
+        { term: 'SDK', def: 'Kit de desarrollo' },
+        { term: 'Framework', def: 'Estructura reutilizable' }
+      ],
+      [
+        { term: 'Base de Datos Relacional', def: 'Datos con relaciones entre sí' },
+        { term: 'Control de Versiones (Git)', def: 'Gestiona cambios en el código' },
+        { term: 'Scrum', def: 'Metodología ágil' },
+        { term: 'Ransomware', def: 'Secuestra datos cifrándolos' },
+        { term: 'Compilador', def: 'Traduce código fuente' }
+      ]
+    ];
+
+    let currentLevel = 0;
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let totalErrors = 0;
+    let timerInterval;
+    let time = 0;
+    let gameStarted = false;
+
+    function startTimer() {
+      if (!gameStarted) {
+        gameStarted = true;
+        timerInterval = setInterval(() => {
+          time++;
+          document.getElementById('timer').innerText = time;
+        }, 1000);
+      }
+    }
+
+    function resetGame() {
+      clearInterval(timerInterval);
+      time = 0;
+      gameStarted = false;
+      document.getElementById('timer').innerText = '0';
+      totalErrors = 0;
+      document.getElementById('errors').innerText = '0';
+      currentLevel = 0;
+      document.getElementById('message').innerHTML = '';
+      initLevel();
+    }
+
+    function initLevel() {
+      const board = document.getElementById('gameBoard');
+      board.innerHTML = '';
+      flippedCards = [];
+      matchedPairs = 0;
+      const levelData = levels[currentLevel];
+      let cards = [];
+
+      levelData.forEach(pair => {
+        cards.push({ text: pair.term, id: pair.term });
+        cards.push({ text: pair.def, id: pair.term });
+      });
+
+      cards = cards.sort(() => 0.5 - Math.random());
+
+      cards.forEach((card, index) => {
+        const cardEl = document.createElement('div');
+        cardEl.className = 'card';
+        cardEl.innerHTML = `
+          <div class="card-inner" data-id="${card.id}" onclick="flipCard(this)">
+            <div class="card-back">?</div>
+            <div class="card-front">${card.text}</div>
+          </div>
+        `;
+        board.appendChild(cardEl);
+      });
+    }
+
+    function flipCard(el) {
+      if (flippedCards.length >= 2 || el.classList.contains('flipped')) return;
+      startTimer();
+
+      const parent = el.parentElement;
+      parent.classList.add('flipped');
+      flippedCards.push(el);
+
+      if (flippedCards.length === 2) {
+        setTimeout(() => {
+          const [first, second] = flippedCards;
+          if (first.dataset.id === second.dataset.id && first !== second) {
+            matchedPairs++;
+            flippedCards = [];
+            if (matchedPairs === levels[currentLevel].length) {
+              currentLevel++;
+              if (currentLevel < levels.length) {
+                initLevel();
+              } else {
+                clearInterval(timerInterval);
+                showFinalMessage();
+              }
+            }
+          } else {
+            totalErrors++;
+            document.getElementById('errors').innerText = totalErrors;
+            flippedCards.forEach(card => {
+              card.parentElement.classList.add('vibrate');
+              setTimeout(() => {
+                card.parentElement.classList.remove('vibrate');
+                card.parentElement.classList.remove('flipped');
+              }, 500);
+            });
+            flippedCards = [];
+          }
+        }, 3000);
+      }
+    }
+
+    function showFinalMessage() {
+      const message = `
+        <div class="alert alert-success">
+          <h3>¡Felicidades, completaste el juego!</h3>
+          <p>Tiempo total: <strong>${time}</strong> segundos</p>
+          <p>Errores cometidos: <strong>${totalErrors}</strong></p>
+          <button class="btn btn-primary" onclick="resetGame()">Jugar de Nuevo</button>
+        </div>
+      `;
+      document.getElementById('message').innerHTML = message;
+    }
+
+    initLevel();
+  </script>
+</body>
+</html>
